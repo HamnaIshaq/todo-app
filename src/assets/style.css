@@ -1,0 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap');
+
+:root {
+  --lightGrayishBlue: hsl(234, 39%, 85%);
+}
+
+.todo-container {
+  background-color: #fff;
+}
