@@ -3,7 +3,10 @@ import TodoInput from '../components/TodoInput';
 //import TodoItem from '../components/TodoItem';
 
 class App extends Component {
-  state = { todoItem: ''};
+  state = { 
+    todoItem: '', 
+    todoList: []
+  };
 
   onInputChange = (e) => {
     this.setState({ todoItem: e.target.value });
@@ -11,6 +14,9 @@ class App extends Component {
 
   onFormSubmit = (e) => {
     e.preventDefault();
+
+    this.setState({ todoList: [...this.state.todoList, this.state.todoItem] });
+    this.setState({ todoItem: '' });
   }
 
   render() {
@@ -21,6 +27,9 @@ class App extends Component {
           inputValue = {this.state.todoItem}
           formSubmit = {this.onFormSubmit}
         /> 
+        <TodoItem 
+          todos = {this.state.todoList}
+        />
       </div>
     );
   }
