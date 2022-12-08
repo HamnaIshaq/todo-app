@@ -1,16 +1,20 @@
 import React, { Component } from 'react';
-//import TodoInput from '../components/TodoInput';
-import TodoItem from '../components/TodoItem';
+import TodoInput from '../components/TodoInput';
+//import TodoItem from '../components/TodoItem';
 
 class App extends Component {
-  state = { todoItem: 'Go for a walk' };
+  state = { todoItem: ''};
+
+  onInputChange = (e) => {
+    this.setState({ todoItem: e.target.value });
+  }
 
   render() {
     return(
       <div>
-        <TodoItem
-          todoItem = { this.state.todoItem }
-        />
+        <TodoInput
+          inputChange = {this.onInputChange}
+        /> 
       </div>
     );
   }
