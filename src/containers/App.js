@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import TodoInput from '../components/TodoInput';
-//import TodoItem from '../components/TodoItem';
+import TodoItem from '../components/TodoItem';
 
 class App extends Component {
   state = { 
