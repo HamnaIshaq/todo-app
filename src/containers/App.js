@@ -14,6 +14,7 @@ class App extends Component {
       <div>
         <TodoInput
           inputChange = {this.onInputChange}
+          inputValue = {this.state.todoItem}
         /> 
       </div>
     );
