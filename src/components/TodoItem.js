@@ -1,11 +1,16 @@
 import React from 'react';
 import '../assets/style.css';
 
-const TodoItem = (props) => {
+const TodoItem = ({ todos }) => {
+  
+  const todoList =  todos.map((todo, index) => {
+    return <li key={index}> {todo} <span>X</span></li>
+  })
+
   return(
     <div className='todo-container'>
       <ul>
-        <li>{ props.todoItem } <span>X</span></li>
+        {todoList}
       </ul>
     </div>
   );
