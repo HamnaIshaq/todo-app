@@ -9,12 +9,17 @@ class App extends Component {
     this.setState({ todoItem: e.target.value });
   }
 
+  onFormSubmit = (e) => {
+    e.preventDefault();
+  }
+
   render() {
     return(
       <div>
         <TodoInput
           inputChange = {this.onInputChange}
           inputValue = {this.state.todoItem}
+          formSubmit = {this.onFormSubmit}
         /> 
       </div>
     );
