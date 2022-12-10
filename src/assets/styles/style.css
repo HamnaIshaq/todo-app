@@ -69,8 +69,18 @@ body {
   padding: 0;
 }
 
-#todo-completed:checked ~ .todo-completed-btn {
+.todo-completed-btn:focus,
+.todo-completed-btn:hover {
+  border: 1px solid var(--brightBlue);
+}
+
+.todo-completed {
   background: var(--checkBackground);
+}
+
+.cross-completed-todo {
+  text-decoration: line-through;
+  color: var(--darkGrayishBlue);
 }
 
 .delete-todo-img {
@@ -93,6 +103,7 @@ body {
 
 .todo {
   margin: 0;
+  cursor: pointer;
 }
 
 .delete-todo-btn {

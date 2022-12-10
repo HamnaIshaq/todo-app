@@ -15,13 +15,24 @@ class App extends Component {
   onFormSubmit = (e) => {
     e.preventDefault();
 
-    this.setState({ todoList: [...this.state.todoList, this.state.todoItem] });
+    this.setState({ todoList: [...this.state.todoList, {todoItem: this.state.todoItem, completed: false}] });
     this.setState({ todoItem: '' });
   }
 
   onDeleteButtonClick = (e) => {
     const deleteTodo = e.currentTarget.getAttribute('data-todo');
-    this.setState({ todoList: this.state.todoList.filter(todo => todo !== deleteTodo)})
+    this.setState({ todoList: this.state.todoList.filter(todo => todo.todoItem !== deleteTodo)})
+  }
+
+  onCompletedButtonClick = (e) => {
+    const clickedTodo = e.currentTarget.getAttribute('data-todo');
+    const completedTodos = this.state.todoList.filter(todo => {
+      if(todo.todoItem === clickedTodo) {
+        todo.completed = !todo.completed; 
+      }
+      return todo      
+    })
+    this.setState({ todoList: completedTodos })
   }
 
   render() {
@@ -35,6 +46,7 @@ class App extends Component {
         <TodoItem 
           todos = {this.state.todoList}
           onDeleteButtonClick={this.onDeleteButtonClick}
+          onCompletedButtonClick={this.onCompletedButtonClick}
         />
       </div>
     );
