@@ -91,7 +91,8 @@ body {
   padding: 0;
   list-style: none;
   background-color: var(--veryLightGray);
-  border-radius: 5px;
+  border-radius: 5px 5px 0 0;
+  margin: 0;
 }
 
 .todo-item {
@@ -112,6 +113,27 @@ body {
 
 .todo-item-container + .todo-item-container {
   border-top: 2px solid var(--veryLightGrayishBlue);
+}
+
+.todo-detail-container {
+  background-color: var(--veryLightGray);
+  padding: 1em;
+  border-radius: 0 0 5px 5px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.todo-clear-completed-btn {
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+.todo-select-btn {
+  font-weight: 700;
+}
+
+.active {
+  color: var(--brightBlue);
 }
 
 @media(min-width: 600px) {

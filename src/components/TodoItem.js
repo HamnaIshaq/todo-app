@@ -2,7 +2,7 @@ import React from 'react';
 import CrossIcon from '../assets/images/icon-cross.svg';
 import CheckIcon from '../assets/images/icon-check.svg';
 
-const TodoItem = ({ todos, onDeleteButtonClick, onCompletedButtonClick }) => {
+const TodoItem = ({ todos, onDeleteButtonClick, onCompletedButtonClick, onClearCompletedButtonClick }) => {
   const todoList =  todos.map((todo, index) => {
     const completed = todo.completed;
 
@@ -36,9 +36,17 @@ const TodoItem = ({ todos, onDeleteButtonClick, onCompletedButtonClick }) => {
 
   return(
     <div>
-      <ul className='todo-list'>
-        {todoList}
-      </ul>
+      <div>
+        <ul className='todo-list'>
+          {todoList}
+        </ul>
+        {
+          todoList.length > 0 ? <div className="todo-detail-container">
+            <span>{todoList.length} items left</span>
+            <button type="button" className="btn todo-clear-completed-btn" onClick={onClearCompletedButtonClick}>Clear Completed</button>
+          </div> : ''
+        }
+      </div>
     </div>
   );
 }

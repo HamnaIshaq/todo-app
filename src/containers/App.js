@@ -35,6 +35,11 @@ class App extends Component {
     this.setState({ todoList: completedTodos })
   }
 
+  onClearCompletedButtonClick = () => {
+    const completedTodos = this.state.todoList.filter(todo => todo.completed !== true)
+    this.setState({ todoList: completedTodos })
+  }
+
   render() {
     return(
       <div className='todo-container'>
@@ -47,6 +52,7 @@ class App extends Component {
           todos = {this.state.todoList}
           onDeleteButtonClick={this.onDeleteButtonClick}
           onCompletedButtonClick={this.onCompletedButtonClick}
+          onClearCompletedButtonClick={this.onClearCompletedButtonClick}
         />
       </div>
     );
