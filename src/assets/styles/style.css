@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap');
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --brightBlue: hsl(220, 98%, 61%);
+  --checkBackground: linear-gradient(to right, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+
+  --lightGrayishBlue: hsl(234, 39%, 85%);
+  --veryLightGray: hsl(0, 0%, 98%);
+  --veryLightGrayishBlue: hsl(235, 32%, 92%);
+  --lightGrayishBlue: hsl(233, 11%, 84%);
+  --darkGrayishBlue: hsl(236, 9%, 61%);
+  --veryDarkGrayishBlue: hsl(235, 19%, 35%);
+}
+
+body {
+  margin: 0;
+  font-family: 'Josefin Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-image: url('../images/bg-mobile-light.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: var(--veryLightGrayishBlue);
+}
+
+.btn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.todo-container {
+  margin: 0 auto;
+  text-align: center;
+  width: 80%;
+  max-width: 500px;
+}
+
+.todo-input {
+  width: 100%;
+  border-radius: 5px;
+  border: none;
+  padding: 1em;
+  font-family: inherit;
+}
+
+.todo-checkbox-label {
+  position: relative;
+}
+
+.todo-checkbox-input {
+  opacity: 0;
+}
+
+.todo-completed-btn {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  border: 1px solid var(--darkGrayishBlue);
+  border-radius: 50%;
+  padding: 0;
+}
+
+#todo-completed:checked ~ .todo-completed-btn {
+  background: var(--checkBackground);
+}
+
+.delete-todo-img {
+  display: flex;
+}
+
+.todo-list {
+  padding: 0;
+  list-style: none;
+  background-color: var(--veryLightGray);
+  border-radius: 5px;
+}
+
+.todo-item {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  padding: 1em;
+}
+
+.todo {
+  margin: 0;
+}
+
+.delete-todo-btn {
+  margin-left: auto;
+}
+
+.todo-item-container + .todo-item-container {
+  border-top: 2px solid var(--veryLightGrayishBlue);
+}
+
+@media(min-width: 600px) {
+  body {
+    background-image: url('../images/bg-desktop-light.jpg');
+  }
+}
