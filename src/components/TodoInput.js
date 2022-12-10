@@ -6,6 +6,7 @@ const TodoInput = ({ inputChange, inputValue, formSubmit }) => {
         <input 
           type="text" 
           placeholder="Create a new todo..."
+          className="todo-input"
           value={inputValue}
           onChange={inputChange}
         />
