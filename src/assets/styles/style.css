@@ -9,7 +9,7 @@
 :root {
   --brightBlue: hsl(220, 98%, 61%);
   --checkBackground: linear-gradient(to right, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
-
+  --white: hsl(0, 0%, 100%);
   --lightGrayishBlue: hsl(234, 39%, 85%);
   --veryLightGray: hsl(0, 0%, 98%);
   --veryLightGrayishBlue: hsl(235, 32%, 92%);
@@ -90,7 +90,7 @@ body {
 .todo-list {
   padding: 0;
   list-style: none;
-  background-color: var(--veryLightGray);
+  background-color: var(--white);
   border-radius: 5px 5px 0 0;
   margin: 0;
 }
@@ -116,7 +116,7 @@ body {
 }
 
 .todo-detail-container {
-  background-color: var(--veryLightGray);
+  background-color: var(--white);
   padding: 1em;
   border-radius: 0 0 5px 5px;
   display: flex;
@@ -126,10 +126,16 @@ body {
 .todo-clear-completed-btn {
   font-family: inherit;
   font-size: 1rem;
+  color: var(--lightGrayishBlue);
 }
 
 .todo-select-btn {
   font-weight: 700;
+}
+
+.todo-select-btn:focus,
+.todo-select-btn:hover {
+  color: var(--brightBlue);
 }
 
 .active {
