@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
+import uuid from 'react-uuid';
 import TodoInput from '../components/TodoInput';
 import TodoItem from '../components/TodoItem';
 
 class App extends Component {
   state = { 
     todoItem: '', 
-    todoList: []
+    todoList: [],
+    filteredTodoList: [],
+    status: 'all'
   };
 
   onInputChange = (e) => {
@@ -15,30 +18,57 @@ class App extends Component {
   onFormSubmit = (e) => {
     e.preventDefault();
 
-    this.setState({ todoList: [...this.state.todoList, {todoItem: this.state.todoItem, completed: false}] });
+    this.setState({ todoList: [...this.state.todoList, {todoItem: this.state.todoItem, completed: false, id: uuid()}] });
+    this.setState({ filteredTodoList: [...this.state.todoList, {todoItem: this.state.todoItem, completed: false, id: uuid()}]});
     this.setState({ todoItem: '' });
   }
 
   onDeleteButtonClick = (e) => {
     const deleteTodo = e.currentTarget.getAttribute('data-todo');
-    this.setState({ todoList: this.state.todoList.filter(todo => todo.todoItem !== deleteTodo)})
+    this.setState({ todoList: this.state.todoList.filter(todo => todo.id !== deleteTodo)})
+    this.setState({ filteredTodoList: this.state.todoList.filter(todo => todo.id !== deleteTodo)})
   }
 
   onCompletedButtonClick = (e) => {
     const clickedTodo = e.currentTarget.getAttribute('data-todo');
     const completedTodos = this.state.todoList.filter(todo => {
-      if(todo.todoItem === clickedTodo) {
+      if(todo.id === clickedTodo) {
         todo.completed = !todo.completed; 
       }
       return todo      
     })
-    this.setState({ todoList: completedTodos })
+    this.setState({ filteredTodoList: completedTodos })
   }
 
   onClearCompletedButtonClick = () => {
     const completedTodos = this.state.todoList.filter(todo => todo.completed !== true)
-    this.setState({ todoList: completedTodos })
+    this.setState({ filteredTodoList: completedTodos })
   }
+
+  changeStatus = (e) => {
+    this.setState({ status: e.target.getAttribute('data-filter') });
+  }
+
+  onFilterTodoList = () => {
+    switch(this.state.status) {
+      case 'completed':
+        this.setState({ filteredTodoList: this.state.todoList.filter(todo => todo.completed === true)});
+        break;
+      case 'active':
+        this.setState({ filteredTodoList: this.state.todoList.filter(todo => todo.completed === false) });
+        break;
+      default:
+        this.setState({ filteredTodoList: this.state.todoList });
+        break;
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if(prevState.status !== this.state.status) {
+      this.onFilterTodoList();
+    }
+  }
+
 
   render() {
     return(
@@ -49,10 +79,12 @@ class App extends Component {
           formSubmit = {this.onFormSubmit}
         /> 
         <TodoItem 
-          todos = {this.state.todoList}
+          todos = {this.state.filteredTodoList}
           onDeleteButtonClick={this.onDeleteButtonClick}
           onCompletedButtonClick={this.onCompletedButtonClick}
           onClearCompletedButtonClick={this.onClearCompletedButtonClick}
+          changeStatus={this.changeStatus}
+          status={this.state.status}
         />
       </div>
     );
