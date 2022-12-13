@@ -70,23 +70,24 @@ class App extends Component {
     }
   }
 
-
   render() {
     return(
-      <div className='todo-container'>
-        <TodoInput
-          inputChange = {this.onInputChange}
-          inputValue = {this.state.todoItem}
-          formSubmit = {this.onFormSubmit}
-        /> 
-        <TodoItem 
-          todos = {this.state.filteredTodoList}
-          onDeleteButtonClick={this.onDeleteButtonClick}
-          onCompletedButtonClick={this.onCompletedButtonClick}
-          onClearCompletedButtonClick={this.onClearCompletedButtonClick}
-          changeStatus={this.changeStatus}
-          status={this.state.status}
-        />
+      <div className="container">
+        <div className="todo-container">
+          <TodoInput
+            inputChange = {this.onInputChange}
+            inputValue = {this.state.todoItem}
+            formSubmit = {this.onFormSubmit}
+          /> 
+          <TodoItem 
+            todos = {this.state.filteredTodoList}
+            onDeleteButtonClick={this.onDeleteButtonClick}
+            onCompletedButtonClick={this.onCompletedButtonClick}
+            onClearCompletedButtonClick={this.onClearCompletedButtonClick}
+            changeStatus={this.changeStatus}
+            status={this.state.status}
+          />
+        </div>
       </div>
     );
   }
