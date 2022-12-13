@@ -8,16 +8,11 @@ const TodoItem = ({ todos, onDeleteButtonClick, onCompletedButtonClick, onClearC
 
     return <div key={todo.id} className='todo-item-container'>
       <li className='todo-item'> 
-        <label htmlFor="todo-completed" className='todo-checkbox-label'>
-          <input type="checkbox" className='todo-checkbox-input' name="todo-completed" id="todo-completed" />
-          <button 
-            type="button" 
-            className={`btn todo-completed-btn ${completed ? 'todo-completed' : ''}`}
-            onClick={onCompletedButtonClick}
-            data-todo={todo.id}
-          >
-            {completed ? <img src={CheckIcon} alt="check"/> : ''}
-          </button>
+        <label htmlFor={todo.id} className='todo-checkbox-label'>
+          <input type="checkbox" className='todo-checkbox-input' name="todo-completed" id={todo.id} onChange={onCompletedButtonClick} data-todo={todo.id}/>
+          <span className={`btn todo-completed-btn ${completed ? 'todo-completed' : ''}`}>
+            {completed ? <div className="check-icon-container"><img className="check-icon" src={CheckIcon} alt="check"/></div> : ''}
+          </span>
         </label>
         <p 
           className={`todo ${completed ? 'cross-completed-todo' : ''}`}
@@ -36,7 +31,7 @@ const TodoItem = ({ todos, onDeleteButtonClick, onCompletedButtonClick, onClearC
 
   return(
     <div>
-      <div>
+      <div className='todo-items-container'>
         <ul className='todo-list'>
           {todoList}
         </ul>
@@ -48,9 +43,18 @@ const TodoItem = ({ todos, onDeleteButtonClick, onCompletedButtonClick, onClearC
         }
       </div>
       {todoList.length > 0 ? <div className="todo-detail-container" style={{borderRadius: '5px'}}>
-        <button type="button" className={`btn todo-clear-completed-btn todo-select-btn ${status === 'all' ? 'active' : ''}`}  data-filter="all" onClick={changeStatus}>All</button>
-        <button type="button" className={`btn todo-clear-completed-btn todo-select-btn ${status === 'active' ? 'active' : ''}`} onClick={changeStatus} data-filter="active">Active</button>
-        <button type="button" className={`btn todo-clear-completed-btn todo-select-btn ${status === 'completed' ? 'active' : ''}`} onClick={changeStatus} data-filter="completed">Completed</button>
+        <label htmlFor="all" className={`btn todo-clear-completed-btn todo-select-btn ${status === 'all' ? 'active' : ''}`}>
+          <input type="radio" name="todo-status" id="all" className="radio-input" value="all" onChange={changeStatus} />
+          All
+        </label>
+        <label htmlFor="active" className={`btn todo-clear-completed-btn todo-select-btn ${status === 'active' ? 'active' : ''}`}>
+          <input type="radio" name="todo-status" id="active" className="radio-input" value="active" onChange={changeStatus} />
+          Active
+        </label>
+        <label htmlFor="completed" className={`btn todo-clear-completed-btn todo-select-btn ${status === 'completed' ? 'active' : ''}`}>
+          <input type="radio" name="todo-status" id="completed" className="radio-input" value="completed" onChange={changeStatus} />
+          Completed
+        </label>
       </div> : ''}
     </div>
   );

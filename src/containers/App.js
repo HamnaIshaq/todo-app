@@ -43,10 +43,11 @@ class App extends Component {
   onClearCompletedButtonClick = () => {
     const completedTodos = this.state.todoList.filter(todo => todo.completed !== true)
     this.setState({ filteredTodoList: completedTodos })
+    this.setState({ todoList: completedTodos })
   }
 
   changeStatus = (e) => {
-    this.setState({ status: e.target.getAttribute('data-filter') });
+    this.setState({ status: e.target.value });
   }
 
   onFilterTodoList = () => {
