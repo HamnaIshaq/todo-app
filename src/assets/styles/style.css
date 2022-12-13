@@ -47,6 +47,23 @@ body {
   max-width: 500px;
 }
 
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 2.5em 0;
+}
+
+.todo-h1 {
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 10px;
+  color: var(--white);
+}
+
+.toggle-mode-icon {
+  align-self: center;
+}
+
 .todo-input {
   width: 100%;
   border-radius: 5px;
