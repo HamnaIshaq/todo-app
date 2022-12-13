@@ -2,7 +2,7 @@ import React from 'react';
 import CrossIcon from '../assets/images/icon-cross.svg';
 import CheckIcon from '../assets/images/icon-check.svg';
 
-const TodoItem = ({ todos, onDeleteButtonClick, onCompletedButtonClick, onClearCompletedButtonClick, changeStatus, status }) => {
+const TodoItem = ({ todos, onDeleteButtonClick, onCompletedButtonClick, onClearCompletedButtonClick, changeStatus, status, totalTodos }) => {
   const todoList =  todos.map(todo => {
     const completed = todo.completed;
 
@@ -29,6 +29,8 @@ const TodoItem = ({ todos, onDeleteButtonClick, onCompletedButtonClick, onClearC
     </div>
   })
 
+  const activeTodosLeft = totalTodos.filter(todo => todo.completed === false)
+
   return(
     <div>
       <div className='todo-items-container'>
@@ -37,7 +39,7 @@ const TodoItem = ({ todos, onDeleteButtonClick, onCompletedButtonClick, onClearC
         </ul>
         {
           todoList.length > 0 ? <div className="todo-detail-container">
-            <span>{todoList.length} items left</span>
+            <span>{activeTodosLeft.length} items left</span>
             <button type="button" className="btn todo-clear-completed-btn" onClick={onClearCompletedButtonClick}>Clear Completed</button>
           </div> : ''
         }

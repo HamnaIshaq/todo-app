@@ -98,6 +98,7 @@ class App extends Component {
             onClearCompletedButtonClick={this.onClearCompletedButtonClick}
             changeStatus={this.changeStatus}
             status={this.state.status}
+            totalTodos={this.state.todoList}
           />
         </div>
       </div>
