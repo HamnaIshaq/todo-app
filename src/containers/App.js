@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import uuid from 'react-uuid';
+import Header from '../components/Header';
 import TodoInput from '../components/TodoInput';
 import TodoItem from '../components/TodoItem';
 
@@ -84,6 +85,7 @@ class App extends Component {
     return(
       <div className="container">
         <div className="todo-container">
+          <Header/>
           <TodoInput
             inputChange = {this.onInputChange}
             inputValue = {this.state.todoItem}
