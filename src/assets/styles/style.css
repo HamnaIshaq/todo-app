@@ -23,10 +23,15 @@ body {
   font-family: 'Josefin Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: var(--veryLightGrayishBlue);
+}
+
+.container {
   background-image: url('../images/bg-mobile-light.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   background-color: var(--veryLightGrayishBlue);
+  height: 200px;
 }
 
 .btn {
@@ -169,7 +174,8 @@ form,
 }
 
 @media(min-width: 600px) {
-  body {
+  .container {
     background-image: url('../images/bg-desktop-light.jpg');
+    height: 300px;
   }
 }
