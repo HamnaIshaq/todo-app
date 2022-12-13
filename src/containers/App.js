@@ -53,7 +53,9 @@ class App extends Component {
   onFilterTodoList = () => {
     switch(this.state.status) {
       case 'completed':
-        this.setState({ filteredTodoList: this.state.todoList.filter(todo => todo.completed === true)});
+        const completedTodo = this.checkIfCompletedTodoExist();
+        if(completedTodo === true)
+          this.setState({ filteredTodoList: this.state.todoList.filter(todo => todo.completed === true)});
         break;
       case 'active':
         this.setState({ filteredTodoList: this.state.todoList.filter(todo => todo.completed === false) });
@@ -62,6 +64,14 @@ class App extends Component {
         this.setState({ filteredTodoList: this.state.todoList });
         break;
     }
+  }
+
+  checkIfCompletedTodoExist = () => {
+    const completedTasks = this.state.todoList.filter(todo => todo.completed === true);
+    if(completedTasks.length === 0) {
+      return false;
+    }
+    return true;
   }
 
   componentDidUpdate(prevProps, prevState) {
