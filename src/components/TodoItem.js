@@ -14,11 +14,7 @@ const TodoItem = ({ todos, onDeleteButtonClick, onCompletedButtonClick, onClearC
             {completed ? <div className="check-icon-container"><img className="check-icon" src={CheckIcon} alt="check"/></div> : ''}
           </span>
         </label>
-        <p 
-          className={`todo ${completed ? 'cross-completed-todo' : ''}`}
-          onClick={onCompletedButtonClick}
-          data-todo={todo.id}
-        >
+        <p className={`todo ${completed ? 'cross-completed-todo' : ''}`}>
           {todo.todoItem}
         </p> 
         
