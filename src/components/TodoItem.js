@@ -9,7 +9,7 @@ const TodoItem = ({ todos, onDeleteButtonClick, onCompletedButtonClick, onClearC
     return <div key={todo.id} className='todo-item-container'>
       <li className='todo-item'> 
         <label htmlFor={todo.id} className='todo-checkbox-label'>
-          <input type="checkbox" className='todo-checkbox-input' name="todo-completed" id={todo.id} onChange={onCompletedButtonClick} data-todo={todo.id}/>
+          <input type="checkbox" className='todo-checkbox-input' name="todo-completed" id={todo.id} onChange={onCompletedButtonClick} />
           <span className={`btn todo-completed-btn ${completed ? 'todo-completed' : ''}`}>
             {completed ? <div className="check-icon-container"><img className="check-icon" src={CheckIcon} alt="check"/></div> : ''}
           </span>

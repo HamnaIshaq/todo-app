@@ -31,7 +31,7 @@ class App extends Component {
   }
 
   onCompletedButtonClick = (e) => {
-    const clickedTodo = e.currentTarget.getAttribute('data-todo');
+    const clickedTodo = e.target.id;
     const completedTodos = this.state.todoList.filter(todo => {
       if(todo.id === clickedTodo) {
         todo.completed = !todo.completed; 
